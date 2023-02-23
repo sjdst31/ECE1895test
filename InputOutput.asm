@@ -1,3 +1,4 @@
+; Added a new comment, yay!
 ; InputOutput.s
 ; Runs on MSP432
 ; Test the GPIO initialization functions by setting the LED
