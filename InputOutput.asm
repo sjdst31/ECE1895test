@@ -38,7 +38,7 @@ P2OUT   .field 0x40004C03,32  ; Port 2 Output
 P1OUT   .field 0x40004C02,32  ; Port 1 Output
 P1DIR   .field 0x40004C04,32  ; Port 1 Direction
 P2DIR   .field 0x40004C05,32  ; Port 2 Direction
-P1REN   .field 0x40004C06,32  ; Port 1 Resistor Enable
+P1REN   .field 0x40004C12,32  ; Port 1 Resistor Enable
 P2REN   .field 0x40004C07,32  ; Port 2 Resistor Enable
 P1DS    .field 0x40004C08,32  ; Port 1 Drive Strength
 P2DS    .field 0x40004C09,32  ; Port 2 Drive Strength
@@ -48,7 +48,7 @@ P1SEL1  .field 0x40004C0C,32  ; Port 1 Select 1
 P2SEL1  .field 0x40004C0D,32  ; Port 2 Select 1
 
 RED       .equ 0x01
-GREEN     .equ 0x02
+GREEN     .equ 0x03
 BLUE      .equ 0x04
 SW1       .equ 0x02                 ; on the left side of the LaunchPad board
 SW2       .equ 0x10                 ; on the right side of the LaunchPad board
@@ -61,7 +61,7 @@ main: .asmfunc
     BL  Port2_Init                  ; initialize P2.2-P2.0 and make them outputs (P2.2-P2.0 built-in LEDs)
 loop
     BL  Port1_Input                 ; read both of the switches on Port 1
-    CMP R0, #0x10                   ; R0 == 0x10?
+    CMP R0, #0x12                   ; R0 == 0x10?
     BEQ sw1pressed                  ; if so, switch 1 pressed
     CMP R0, #0x02                   ; R0 == 0x02?
     BEQ sw2pressed                  ; if so, switch 2 pressed
